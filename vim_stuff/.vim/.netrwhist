@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/gil/.vim/bundle/snipmate.vim/snippets'
+let g:netrw_dirhist_2='/home/gil/Desktop/vim-7.4/vim74/src'
+let g:netrw_dirhist_3='/home/gil/mySourceCode/Q1_Balls'
+let g:netrw_dirhist_4='/home/gil/mySourceCode/Q_findBitwise'
+let g:netrw_dirhist_5='/home/gil/mySourceCode/myCoolMax'
+let g:netrw_dirhist_6='/home/gil/mySourceCode/Q_intelGivenToMe'
