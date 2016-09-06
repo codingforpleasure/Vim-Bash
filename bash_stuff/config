@@ -1,3 +1,9 @@
+# This config file should be located in ~/.config/terminator
+# The Camigo font was taken from here:
+# https://github.com/chrissimpkins/codeface/tree/master/fonts/camingo-code
+#
+# after cloning make sure you have rebuild the font cache with fc-cache -f -v
+
 [global_config]
   enabled_plugins = InactivityWatch, ActivityWatch, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   title_font = Sans 26
@@ -20,6 +26,6 @@
 [profiles]
   [[default]]
     background_image = None
-    font = CamingoCode 22
+    font = CamingoCode 22 #Monospace 22
     scrollback_infinite = True
     use_system_font = False
