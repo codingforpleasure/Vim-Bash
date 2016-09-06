@@ -2,6 +2,8 @@
 alias ll='ls --color -alF --human-readable --group-directories-first'
 alias la='ls -A --human-readable'
 alias l='ls -CF --human-readable'
+
+# should install colorgcc, just enter:
 # sudo apt install colorgcc
 alias gcc='colorgcc'
 
@@ -39,5 +41,9 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 alias reload='echo "reloading bashrc" && source ~/.bashrc'
 
-#Gilc added
 alias du='du --human-readable'
+
+alias pskill='pkill'
+
+# prompt before overwrite
+alias cp='cp -i'

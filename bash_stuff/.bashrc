@@ -23,6 +23,8 @@ HISTFILESIZE=2000
 # written to the history file:
 export HISTTIMEFORMAT="%d/%m/%y %T  " 
 
+alias dt='date "+%F %T"'
+
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -79,6 +81,7 @@ unset color_prompt force_color_prompt
 
 # Custom title-setting code that adds a triangle play-arrow
 # if the terminal is not waiting on the prompt
+
 case "$TERM" in
 xterm*|rxvt*)
     # This tells bash: before showing the prompt, run this
@@ -118,6 +121,7 @@ function terminal_title ()
 #export THIS_TERMINAL_TITLE=`echo -n $BASH_COMMAND`
 terminal_title `pwd`
 
+
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
@@ -148,13 +152,16 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# I would like the MAN pages would be colorful. so should export
+# Gilc added: I would like the MAN pages would be colorful. so should export
 # enviroment variable make sure most is installed if not, 
 # install it via:  apt-get install most.
 export PAGER="most"
 
 # present on the title the current path
-PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo -ne "\033]0;${PWD}\007"'
 
 # Month names are now written in English instead of Hebrew
 export LC_TIME=en_US.UTF-8
+
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo `dt` `pwd` $$ $USER \
+               "$(history 1)" >> ~/.bash_eternal_history'

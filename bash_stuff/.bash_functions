@@ -1,9 +1,11 @@
-# Kill processes matching a given pattern:
-pskill() {
-ps ax | grep "$1" | grep -v grep | awk '{ print $1 }' | xargs kill
+# Executes gedit and removes the job from the current shell,
+# so now the current shell is not getting blocked.
+gedit(){
+/usr/bin/gedit "$1" & disown
 }
 
 
+# Extracts archive files of any type with hassle-free :)
 extract () {
 if [ -f $1 ] ; then
   case $1 in
@@ -28,7 +30,11 @@ fi
 
 
 # cd backwards few levels
-function cdn(){
-for i in `seq $1`;
-do cd ..;
-done;}
+    function cdn(){
+    cmd=""
+    for (( i=0; i < $1; i++)) 
+    do  
+        cmd="$cmd../"
+    done
+    cd "$cmd"
+    }
