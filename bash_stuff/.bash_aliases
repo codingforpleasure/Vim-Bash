@@ -1,5 +1,5 @@
 # some more ls aliases
-alias ll='ls --color -alF --human-readable --group-directories-first'
+alias ll='ls --color -alF --human-readable --group-directories-first | sort'
 alias la='ls -A --human-readable'
 alias l='ls -CF --human-readable'
 
@@ -29,14 +29,21 @@ fi
 # A great extension for colorizing tools
 # should install download the "Generic Colouriser" installer
 # taken from here: http://korpus.juls.savba.sk/~garabik/software/grc/
-alias netstat='grc netstat'
-alias ping='grc ping'
-alias tail='grc tail'
-alias ps='grc ps aux'
+
+if [ -e /usr/bin/grc ]; then
+	alias netstat='grc netstat'
+	alias ping='grc ping'
+	alias tail='grc tail'
+	alias ps='grc ps aux'
+else
+	echo -e "\n${BWhite}For colorizing linux tools (ping/netstat/tail/ps) ${NC},"  \
+        "\n${BRed}you should install \"grc\" by entering:\"apt-get install grc\" ${NC}\n"
+fi
+
 
 
 # Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
+# sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 alias reload='echo "reloading bashrc" && source ~/.bashrc'

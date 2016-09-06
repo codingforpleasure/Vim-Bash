@@ -8,22 +8,92 @@ case $- in
       *) return;;
 esac
 
+
+###################### Include other files ###########################
+
+# Separate file for alias definitions
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+ 
+# Separate functions file
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+
+# Separate colors file
+if [ -f ~/.bash_colors ]; then
+    . ~/.bash_colors
+fi
+ 
+######################################################################
+
+
+######################## History settings ############################
+
 # don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
 HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+export HISTSIZE=100000                   # big big history
+export HISTFILESIZE=100000               # big big history
 
 # Have added a time stamp information associated with each history entry is 
 # written to the history file:
 export HISTTIMEFORMAT="%d/%m/%y %T  " 
 
-alias dt='date "+%F %T"'
+# Save and reload the history after each command finishes
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+######################################################################
+
+
+# Show on the titlebar the current path
+PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
+
+
+# Month names are now written in English instead of Hebrew
+export LC_TIME=en_US.UTF-8
+<<COMMENT1
+case "$TERM" in
+xterm*|rxvt*)
+    # This tells bash: before showing the prompt, run this
+    #echo "Setting title to current path "
+
+    welcome_me()
+    {
+	#echo "Welcome me was invoked!!!"
+	#echo -ne "\033]0;▶ $BASH_COMMAND \007" #worked in the past
+       PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo -ne "\033]0;${PWD}\007"'
+	#echo -ne "\033]0;▶ echo -n $BASH_COMMAND; echo -ne \007"
+    }
+
+    # The DEBUG signal simply announces the last-run command
+    # trap show_command_in_title_bar DEBUG;
+    trap welcome_me DEBUG;
+
+    ;;
+*)
+    echo "failed in case...."		
+    ;;
+esac
+
+COMMENT1
+# Now we can set the title of the terminal with terminal_title my title
+<<COMMENT2
+function terminal_title ()
+{
+    export THIS_TERMINAL_TITLE="$@"
+}
+# Here's a good default
+#export THIS_TERMINAL_TITLE=`echo -n $BASH_COMMAND`
+terminal_title `pwd`
+COMMENT2
+
 
 
 # check the window size after each command and, if necessary,
@@ -82,63 +152,9 @@ unset color_prompt force_color_prompt
 # Custom title-setting code that adds a triangle play-arrow
 # if the terminal is not waiting on the prompt
 
-case "$TERM" in
-xterm*|rxvt*)
-    # This tells bash: before showing the prompt, run this
-    PROMPT_COMMAND='echo -ne "\033]0;${THIS_TERMINAL_TITLE}\007"'
-	
-    # Edit the title if a command is running:
-    # http://www.davidpashley.com/articles/xterm-titles-with-bash.html
-    show_command_in_title_bar()
-    {
-        case "$BASH_COMMAND" in
-            *\033]0*)
-                # The command is trying to set the title bar as well;
-                # this is most likely the execution of $PROMPT_COMMAND.
-                # In any case nested escapes confuse the terminal, so don't
-                # output them.
-                ;;
-            *)
-#                echo -ne "\033]0;▶ echo -n $BASH_COMMAND; echo -ne \007"
-                echo -ne "\033]0;▶ $BASH_COMMAND \007"
-#			"\e]0;"; echo -n $BASH_COMMAND; echo -ne "\007"
-                ;;
-        esac
-    }
-    # The DEBUG signal simply announces the last-run command
-    trap show_command_in_title_bar DEBUG
-    ;;
-*)
-    ;;
-esac
-
-# Now we can set the title of the terminal with terminal_title my title
-function terminal_title ()
-{
-    export THIS_TERMINAL_TITLE="$@"
-}
-# Here's a good default
-#export THIS_TERMINAL_TITLE=`echo -n $BASH_COMMAND`
-terminal_title `pwd`
-
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
- 
-# Separate functions file
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
-fi
 
 
 # enable programmable completion features (you don't need to enable
@@ -152,16 +168,19 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Gilc added: I would like the MAN pages would be colorful. so should export
+#I would like the MAN pages to be colorful. so should export
 # enviroment variable make sure most is installed if not, 
 # install it via:  apt-get install most.
-export PAGER="most"
+
+if [ -e /usr/bin/most ]; then
+	export PAGER="most"
+else
+
+	echo -e "\n${BWhite}For color manual pages, install \"most\" by entering: ${NC}"  \
+        "\n${BRed}\"apt-get install most\" ${NC}\n"
+fi
 
 # present on the title the current path
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo -ne "\033]0;${PWD}\007"'
+#PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo -ne "\033]0;${PWD}\007"'
 
-# Month names are now written in English instead of Hebrew
-export LC_TIME=en_US.UTF-8
-
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo `dt` `pwd` $$ $USER \
-               "$(history 1)" >> ~/.bash_eternal_history'
+#LANG=C ls -la --group-directories-first
