@@ -30,11 +30,11 @@ fi
 
 
 # cd backwards few levels
-    function cdn(){
+function cdn(){
     cmd=""
     for (( i=0; i < $1; i++)) 
     do  
         cmd="$cmd../"
     done
     cd "$cmd"
-    }
+}

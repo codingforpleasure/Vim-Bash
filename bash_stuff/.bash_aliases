@@ -1,7 +1,7 @@
 # some more ls aliases
-alias ll='ls --color -alF --human-readable --group-directories-first | sort'
+alias ll='ls --color -alF --human-readable --group-directories-first'
 alias la='ls -A --human-readable'
-alias l='ls -CF --human-readable'
+#alias l='ls -CF --human-readable'
 
 # should install colorgcc, just enter:
 # sudo apt install colorgcc
