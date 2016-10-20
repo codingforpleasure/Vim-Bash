@@ -2,7 +2,7 @@
 ===================
 
 Hey! 
-here I'll be showing my recent **bashrc customizations**[^bashrc_customization], take a peek and see if it suits your needs.
+here I'll be showing my recent **bashrc customizations**, take a peek and see if it suits your needs.
 
 ----------
 My bashrc has been divided into three separate files, each file will holds different functionality: 
@@ -23,5 +23,5 @@ My bashrc has been divided into three separate files, each file will holds diffe
 > - Any comments or suggestions would be welcome
 > - You can drop me a message via **e-mail** -  cohengil333(at)gmail.com
 
-  [^bashrc_customization]: [bashrc customization](https://stackedit.io/) is a full-featured, open-source bash extensions written by me for sharing the knowledge with the open-source community.
+ [bashrc customization](https://github.com/codingforpleasure/Vim_Bash/blob/master/bash_stuff/.bashrc) is a full-featured, open-source bash extensions written by me for sharing the knowledge with the open-source community.
   
