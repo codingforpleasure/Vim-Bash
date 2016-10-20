@@ -16,34 +16,7 @@ My bashrc has been divided into three separate files, each file will holds diffe
 ---
   Take a sip from your coffee <i class="icon-coffee"></i> and **enjoy** the process of exploring and coding.
 
-```flow
-st=>start: invoke .bashrc
-
-op=>operation: My Operation
-cond1=>condition: .bash_aliases exists?
-cond2=>condition: .bash_functions exists?
-cond3=>condition: .bash_colors exists?
-
-op1a=>operation: invoke .bash_aliases
-op1b=>operation: notify user
-
-op2a=>operation: invoke .bash_functions
-op3a=>operation: invoke .bash_colors
-e=>end: Finished, Enjoy working in bash :)
-
-st->cond1
-cond1(yes)->op1a
-cond1(no)->op1b
-op1a->cond2
-cond2(yes)->op2a
-cond2(no)->op1b
-op2a->cond3
-cond3(yes)->op3a
-cond3(no)->op1b
-op1b->e
-op3a->e
-
-```
+![alt tag](https://github.com/codingforpleasure/Vim_Bash/tree/master/bash_stuff/my_flowchart.png)
 
 > **Note:** In the future to come there would be more updates so stay tuned.
 
