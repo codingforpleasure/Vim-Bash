@@ -17,7 +17,7 @@ My bashrc has been divided into three separate files, each file will holds diffe
   Take a sip from your coffee <i class="icon-coffee"></i> and **enjoy** the process of exploring and coding.
 
 ```
-![alt tag](https://github.com/codingforpleasure/Vim_Bash/tree/master/bash_stuff/my_flowchart.png)
+![alt Text](https://github.com/codingforpleasure/Vim_Bash/tree/master/bash_stuff/my_flowchart.png)
 ```
 
 > **Note:** In the future to come there would be more updates so stay tuned.
