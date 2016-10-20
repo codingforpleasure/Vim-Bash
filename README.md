@@ -16,9 +16,7 @@ My bashrc has been divided into three separate files, each file will holds diffe
 ---
   Take a sip from your coffee <i class="icon-coffee"></i> and **enjoy** the process of exploring and coding.
 
-```
-![alt Text](https://github.com/codingforpleasure/Vim_Bash/tree/master/bash_stuff/my_flowchart.png)
-```
+![my_flowchart](https://cloud.githubusercontent.com/assets/1729719/19562441/011dd98a-96e5-11e6-8e51-606f6622e712.png)
 
 > **Note:** In the future to come there would be more updates so stay tuned.
 
