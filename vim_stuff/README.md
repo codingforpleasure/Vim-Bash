@@ -15,3 +15,6 @@ Enter vim and enter:
 `:PluginInstall`
 
 
+**My workspace after setting things up:**
+
+![screen_shot_example](https://cloud.githubusercontent.com/assets/1729719/19620899/237071ea-988f-11e6-94df-464e08fa6608.jpg)
