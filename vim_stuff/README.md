@@ -19,7 +19,7 @@ should grab the fonts from : https://github.com/powerline/fonts/tree/master/Mesl
 
 and install it in directory: /usr/share/fonts/opentype,
 
-don't forget to rebuid the font cache. simply enter: sudo fc-cache -fv
+don't forget to rebuid the font cache. simply enter: `sudo fc-cache -fv`
 
 **My workspace after setting things up:**
 
