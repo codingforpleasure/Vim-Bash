@@ -14,7 +14,10 @@
 Enter vim and enter:
 `:PluginInstall`
 
-
+**Fifth Step**: Installing Meslo fonts
+should grab the fonts from : https://github.com/powerline/fonts/tree/master/Meslo
+and install it in directory: /usr/share/fonts/opentype,
+don't forget to rebuid the font cache. simply enter: sudo fc-cache -fv
 **My workspace after setting things up:**
 
 ![screen_shot_example](https://cloud.githubusercontent.com/assets/1729719/19620899/237071ea-988f-11e6-94df-464e08fa6608.jpg)
